@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linkly URL Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="./"><span class="brand-mark">↗</span>Linkly</a>
+      <div class="topbar-actions">
+        <span class="storage-status"><span class="status-dot"></span>Saved locally</span>
+        <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle theme">☾</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <p class="eyebrow">LINK MANAGEMENT</p>
+        <h1>Short links.<br><span>Big impact.</span></h1>
+        <p class="hero-copy">Create, organize, and track every link from one quiet little dashboard.</p>
+      </div>
+      <div class="hero-orbit" aria-hidden="true"><div class="orbit-ring"></div><div class="orbit-dot"></div></div>
+    </section>
+
+    <section class="create-card" aria-labelledby="create-heading">
+      <div class="card-heading">
+        <span class="step">01</span>
+        <div><h2 id="create-heading">Create a short link</h2><p>Turn a long URL into something memorable.</p></div>
+      </div>
+      <form id="shortenForm">
+        <div class="url-input-wrap">
+          <span class="input-icon" aria-hidden="true">↗</span>
+          <input id="longUrl" type="url" placeholder="Paste your long URL here..." required>
+          <button class="primary-button" type="submit">Shorten <span>→</span></button>
+        </div>
+        <div class="custom-slug-row">
+          <label for="customSlug">Custom alias</label>
+          <div class="slug-input"><span>link.ly/</span><input id="customSlug" type="text" placeholder="optional" maxlength="40"></div>
+          <label class="expiry-label" for="expiry">Expires after</label>
+          <select id="expiry">
+            <option value="never">Never</option>
+            <option value="1">1 day</option>
+            <option value="7">7 days</option>
+            <option value="30">30 days</option>
+          </select>
+        </div>
+        <p class="form-message" id="formMessage" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="stats-grid" aria-label="Link statistics">
+      <article class="stat-card"><span class="stat-icon purple">↗</span><div><p>Total links</p><strong id="totalLinks">0</strong></div></article>
+      <article class="stat-card"><span class="stat-icon orange">⌁</span><div><p>Total clicks</p><strong id="totalClicks">0</strong></div></article>
+      <article class="stat-card"><span class="stat-icon green">✓</span><div><p>Active links</p><strong id="activeLinks">0</strong></div></article>
+    </section>
+
+    <section aria-labelledby="links-heading">
+      <div class="section-header">
+        <h2 id="links-heading">Your links</h2>
+        <div class="table-tools">
+          <label class="search-wrap" for="searchInput">⌕<input id="searchInput" type="search" placeholder="Search links..." aria-label="Search links"></label>
+          <button class="text-button" id="clearAll" type="button">Clear all</button>
+        </div>
+      </div>
+      <div class="table-wrap" id="linksTableWrap" hidden>
+        <table>
+          <thead><tr><th>Short link</th><th>Destination</th><th>Created</th><th>Clicks</th><th></th></tr></thead>
+          <tbody id="linksBody"></tbody>
+        </table>
+      </div>
+      <div class="empty-state" id="emptyState">
+        <div class="empty-icon">↗</div><h3>No links yet</h3><p>Create your first short link above to get started.</p>
+      </div>
+    </section>
+
+    <footer>Linkly · Your links, <span>simplified.</span></footer>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
